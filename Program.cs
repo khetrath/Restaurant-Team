@@ -50,6 +50,20 @@ namespace RestaurantApp
 
         static void AddRestaurant() { }      // A จะมาเขียนตรงนี้
         static void ShowGoodRating() { }     // B จะมาเขียนตรงนี้
-        static void ShowSummaryRating() { }  // C จะมาเขียนตรงนี้
+        static void ShowSummaryRating()
+        {
+            Console.WriteLine("\n--- [C] สรุปร้านอาหารคะแนนสูงสุดและต่ำสุด ---");
+            if (restaurants.Count == 0)
+            {
+                Console.WriteLine("⚠️ ไม่มีข้อมูลร้านอาหารในระบบ");
+                return;
+            }
+
+            var maxRestaurant = restaurants.OrderByDescending(r => r.Rating).First();
+            var minRestaurant = restaurants.OrderBy(r => r.Rating).First();
+
+            Console.WriteLine($"🏆 ร้านคะแนนสูงสุด: {maxRestaurant.Name} ({maxRestaurant.Type}) - {maxRestaurant.Rating}/5.0");
+            Console.WriteLine($"🔻 ร้านคะแนนต่ำสุด: {minRestaurant.Name} ({minRestaurant.Type}) - {minRestaurant.Rating}/5.0");
+        }
     }
 }
