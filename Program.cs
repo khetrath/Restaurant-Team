@@ -48,7 +48,16 @@ namespace RestaurantApp
             }
         }
 
-        static void AddRestaurant() { }      // A จะมาเขียนตรงนี้
+        static void AddRestaurant() {
+            Console.WriteLine("\n--- [A] เพิ่มข้อมูลร้านอาหารใหม่ ---");
+            Console.Write("กรอกชื่อร้าน: ");
+            string name = Console.ReadLine();
+            Console.Write("กรอกประเภทร้าน: ");
+            string type = Console.ReadLine();
+            Console.Write("กรอกคะแนนร้าน (0.0 - 5.0): ");
+            double rating = Convert.ToDouble(Console.ReadLine());
+            restaurants.Add(new Restaurant(name, type, rating));
+        }      // A จะมาเขียนตรงนี้
         static void ShowGoodRating() { }     // B จะมาเขียนตรงนี้
         static void ShowSummaryRating() { }  // C จะมาเขียนตรงนี้
     }
