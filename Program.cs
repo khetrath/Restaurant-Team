@@ -58,7 +58,22 @@ namespace RestaurantApp
             double rating = Convert.ToDouble(Console.ReadLine());
             restaurants.Add(new Restaurant(name, type, rating));
         }      // A จะมาเขียนตรงนี้
-        static void ShowGoodRating() { }     // B จะมาเขียนตรงนี้
+        static void ShowGoodRating() {
+            Console.WriteLine("\n--- [B] รายชื่อร้านอาหารที่มีคะแนนตั้งแต่ 4.5 ขึ้นไป ---");
+            var goodRestaurants = restaurants.Where(r => r.Rating >= 4.5).ToList();
+
+            if (goodRestaurants.Count > 0)
+            {
+                foreach (var r in goodRestaurants)
+                {
+                    Console.WriteLine($"- {r.Name} ({r.Type}) คะแนน: {r.Rating}/5.0");
+                }
+            }
+            else
+            {
+                Console.WriteLine("⚠️ ไม่พบร้านอาหารที่มีคะแนนตั้งแต่ 4.5 ขึ้นไป");
+            }
+        }     // B จะมาเขียนตรงนี้
         static void ShowSummaryRating()
         {
             Console.WriteLine("\n--- [C] สรุปร้านอาหารคะแนนสูงสุดและต่ำสุด ---");
